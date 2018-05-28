@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
@@ -14,6 +15,7 @@ public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
+    TextView name, alternateName, origin, description, ingredients;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +23,11 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         ImageView ingredientsIv = findViewById(R.id.image_iv);
+        name = findViewById(R.id.name_tv);
+        alternateName = findViewById(R.id.othernames_tv);
+        origin = findViewById(R.id.origin_tv);
+        description = findViewById(R.id.description_tv);
+        ingredients = findViewById(R.id.ingredients_tv);
 
         Intent intent = getIntent();
         if (intent == null) {
@@ -43,7 +50,7 @@ public class DetailActivity extends AppCompatActivity {
             return;
         }
 
-        populateUI();
+        populateUI(sandwich);
         Picasso.with(this)
                 .load(sandwich.getImage())
                 .into(ingredientsIv);
@@ -56,7 +63,30 @@ public class DetailActivity extends AppCompatActivity {
         Toast.makeText(this, R.string.detail_error_message, Toast.LENGTH_SHORT).show();
     }
 
-    private void populateUI() {
+    private void populateUI(Sandwich sandwich) {
 
+        String noData = "No Data Available";
+        name.setText(sandwich.getMainName());
+        if (sandwich.getPlaceOfOrigin().isEmpty()) {
+            origin.setText(noData);
+        } else {
+            origin.setText(sandwich.getPlaceOfOrigin());
+        }
+        description.setText(sandwich.getDescription());
+
+        if (sandwich.getAlsoKnownAs().isEmpty()) {
+            alternateName.setText(noData);
+        } else {
+            StringBuilder names = new StringBuilder();
+            for (String value : sandwich.getAlsoKnownAs()) {
+                names.append(value).append(", ");
+            }
+            alternateName.setText(names);
+        }
+        StringBuilder ingredient = new StringBuilder();
+        for (String value : sandwich.getIngredients()) {
+            ingredient.append("\u2022 ").append(value).append("\n");
+        }
+        ingredients.setText(ingredient);
     }
 }
