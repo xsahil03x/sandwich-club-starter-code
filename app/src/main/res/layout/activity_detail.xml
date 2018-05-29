@@ -16,19 +16,19 @@
             android:adjustViewBounds="true"
             android:id="@+id/image_iv"
             android:layout_width="0dp"
-            android:layout_height="250dp"
+            android:layout_height="@dimen/imageView_height"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:drawable/picture_frame"
-            android:contentDescription="Sandwich Image" />
+            android:contentDescription="@string/sandwich_image_cd" />
 
         <View
             android:id="@+id/view"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/view_height"
             android:alpha="0.7"
-            android:background="#455A64"
+            android:background="@color/BlueGrey"
             app:layout_constraintBottom_toBottomOf="@+id/image_iv"
             app:layout_constraintEnd_toEndOf="@+id/image_iv"
             app:layout_constraintHorizontal_bias="0.0"
@@ -40,8 +40,8 @@
             android:id="@+id/name_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginBottom="@dimen/mainName_margin"
+            android:layout_marginTop="@dimen/mainName_margin"
             android:textColor="@android:color/white"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -54,7 +54,7 @@
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
-            android:layout_height="15dp"
+            android:layout_height="wrap_content"
             android:text="@string/detail_also_known_as_label"
             android:textColor="@android:color/black"
             android:textSize="14sp"
@@ -68,15 +68,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="16dp" />
+            app:layout_constraintGuide_begin="@dimen/activity_vertical_margin" />
 
         <TextView
             android:id="@+id/othernames_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/textView_top_margin"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
             app:layout_constraintStart_toEndOf="@+id/textView2"
             app:layout_constraintTop_toBottomOf="@+id/view"
@@ -98,9 +98,9 @@
             android:id="@+id/origin_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/textView_top_margin"
             app:layout_constraintStart_toEndOf="@+id/origin_lbl"
             app:layout_constraintTop_toBottomOf="@+id/othernames_tv"
             tools:text="India" />
@@ -110,7 +110,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_end="16dp" />
+            app:layout_constraintGuide_end="@dimen/activity_vertical_margin" />
 
         <TextView
             android:textStyle="bold"
@@ -127,9 +127,9 @@
             android:id="@+id/description_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="34dp"
-            android:layout_marginStart="34dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginLeft="@dimen/description_start_margin"
+            android:layout_marginStart="@dimen/description_start_margin"
+            android:layout_marginTop="@dimen/textView_top_margin"
             app:layout_constraintEnd_toEndOf="@id/guideline4"
             app:layout_constraintStart_toEndOf="@+id/textView6"
             app:layout_constraintTop_toBottomOf="@+id/origin_tv"
@@ -151,10 +151,10 @@
             android:id="@+id/ingredients_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="36dp"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="14dp"
-            android:paddingBottom="12dp"
+            android:layout_marginLeft="@dimen/ingredients_start_margin"
+            android:layout_marginStart="@dimen/ingredients_start_margin"
+            android:layout_marginTop="@dimen/textView_top_margin"
+            android:paddingBottom="@dimen/ingredients_bottom_padding"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
             app:layout_constraintStart_toEndOf="@+id/textView9"
             app:layout_constraintTop_toBottomOf="@+id/description_tv"

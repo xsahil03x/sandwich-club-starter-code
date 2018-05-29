@@ -15,7 +15,6 @@ public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
-    TextView name, alternateName, origin, description, ingredients;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +22,6 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         ImageView ingredientsIv = findViewById(R.id.image_iv);
-        name = findViewById(R.id.name_tv);
-        alternateName = findViewById(R.id.othernames_tv);
-        origin = findViewById(R.id.origin_tv);
-        description = findViewById(R.id.description_tv);
-        ingredients = findViewById(R.id.ingredients_tv);
 
         Intent intent = getIntent();
         if (intent == null) {
@@ -50,6 +44,7 @@ public class DetailActivity extends AppCompatActivity {
             return;
         }
 
+        //Populating the UI from the data retrieved
         populateUI(sandwich);
         Picasso.with(this)
                 .load(sandwich.getImage())
@@ -66,6 +61,15 @@ public class DetailActivity extends AppCompatActivity {
     private void populateUI(Sandwich sandwich) {
 
         String noData = "No Data Available";
+
+        //Referencing various textViews
+        TextView name = findViewById(R.id.name_tv);
+        TextView alternateName = findViewById(R.id.othernames_tv);
+        TextView origin = findViewById(R.id.origin_tv);
+        TextView description = findViewById(R.id.description_tv);
+        TextView ingredients = findViewById(R.id.ingredients_tv);
+
+        //Setting up the various fields
         name.setText(sandwich.getMainName());
         if (sandwich.getPlaceOfOrigin().isEmpty()) {
             origin.setText(noData);
